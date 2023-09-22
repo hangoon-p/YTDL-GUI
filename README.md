@@ -34,7 +34,7 @@
 <br><strong>3. Search 버튼을 누르면 잠시 후 다운받을 수 있는 항목의 리스트가 나타납니다.</strong>
    <ul dir="auto">
    <li>Youtube Music의 공식 음원의 경우 Youtube Premium 쿠키를 사용하면 고음질 음원을 다운받을 수 있습니다.</li>
-   <li>쿠키 사용 시 오류가 생기면 브라우저를 종료하거나 다른 브라우저를 이용해 보세요.</li></ul>   
+   <li>쿠키 사용 시 오류가 생기면 브라우저를 종료하거나 다른 브라우저를 이용해 보세요.<br>(다른 브라우저에서 유튜브 로그인 후 브라우저 종료하면 됩니다)</li></ul>   
    
 ![Manual3](https://github.com/hangoon-p/Youtube-Downloader-YT-DLP-GUI-for-Windows-/assets/11846563/7c2d45c6-ca4c-40f8-a663-1a31e4f45bf0)
   

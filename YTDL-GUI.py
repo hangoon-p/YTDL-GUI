@@ -143,7 +143,7 @@ class YoutubeDownloader(tk.Tk):
     def get_selected_items(self):
         self.selected_format_indices = self.format_listbox.curselection()
         if len(self.selected_format_indices) > 2:            
-            self.format_listbox.selection_clear(0,4)
+            self.format_listbox.selection_clear(0,self.format_listbox.size()-1)
             for index in self.full_selected_format_indices:
                 self.format_listbox.select_set(index)
         elif len(self.selected_format_indices) == 1:
@@ -223,9 +223,9 @@ class YoutubeDownloader(tk.Tk):
  
         try:
             yt_dlp_output = subprocess.check_output(command, text=True, stderr=subprocess.STDOUT, startupinfo=startupinfo)
-            f = open("yt-dlp-response.txt",'w')
-            f.write(yt_dlp_output)
-            f.close()
+            #f = open("yt-dlp-response.txt",'w')
+            #f.write(yt_dlp_output)
+            #f.close()
             self.video_info = json.loads(yt_dlp_output)           
 
             # Update video title

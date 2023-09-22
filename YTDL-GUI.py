@@ -58,11 +58,11 @@ class YoutubeDownloader(tk.Tk):
         self.cookies_label.grid(row=2,column=1, sticky=tk.NW)
         self.cookie_options = [
             "No Cookies",
-            "cookies.txt",
+            #"cookies.txt",
             "Browser: Chrome",
             "Browser: Edge",            
             "Browser: Firefox",
-            "Browser: Safari"
+            #"Browser: Safari"
         ]
         self.cookie_dropdown = ttk.Combobox(frame_top, values=self.cookie_options, width=41)
         self.cookie_dropdown.grid(row=2, column=2, sticky=tk.NW, padx=5)        
@@ -130,9 +130,10 @@ class YoutubeDownloader(tk.Tk):
 
     def on_combobox_selected(self, event):
         # Restore the listbox selection when dropdown menu is selected
-        for index in self.selected_format_indices:
-            if index is not None:
-                self.format_listbox.select_set(index)
+        if self.selected_format_indices is not None:
+            for index in self.selected_format_indices:
+                if index is not None:
+                    self.format_listbox.select_set(index)
         
     def on_listbox_selected(self, event):
         # Save the listbox selection state
@@ -222,6 +223,9 @@ class YoutubeDownloader(tk.Tk):
  
         try:
             yt_dlp_output = subprocess.check_output(command, text=True, stderr=subprocess.STDOUT, startupinfo=startupinfo)
+            f = open("yt-dlp-response.txt",'w')
+            f.write(yt_dlp_output)
+            f.close()
             self.video_info = json.loads(yt_dlp_output)           
 
             # Update video title
@@ -247,10 +251,10 @@ class YoutubeDownloader(tk.Tk):
                 if format_vcodec == 'none' and format_acodec != 'none' and format_entry.get('format_id', 'N/A') in ['140','141','251']:
                     format_type = "Audio Only"
                     is_good_format = True
-                elif format_vcodec != 'none' and format_acodec != 'none' and format_entry.get('format_note', 'N/A') in ['720p','1080p']:
+                elif format_vcodec != 'none' and format_acodec != 'none' and any(resolution in format_entry.get('format_note', 'N/A') for resolution in ['720p','1080p','1440p','2160p']):
                     format_type = "Video + Audio"
                     is_good_format = True
-                elif format_vcodec != 'none' and format_acodec == 'none' and format_entry.get('format_note', 'N/A') in ['720p','1080p'] and format_entry.get('ext','N/A') == 'mp4':
+                elif format_vcodec != 'none' and format_acodec == 'none' and any(resolution in format_entry.get('format_note', 'N/A') for resolution in ['720p','1080p','1440p','2160p']) and format_entry.get('ext','N/A') == 'mp4':
                     format_type = "Video Only"
                     is_good_format = True
                     
@@ -396,6 +400,13 @@ class YoutubeDownloader(tk.Tk):
 
                     ffmpeg_process = subprocess.Popen(ffmpeg_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, startupinfo=startupinfo)
                     stdout, stderr = ffmpeg_process.communicate()
+                    
+                    if ffmpeg_process.returncode != 0:
+                        messagebox.showerror("Error", stderr.decode())
+                        return
+                        
+                    os.remove(audio_filename)
+                    os.remove(video_filename)
 
         messagebox.showinfo("Download Complete", "Your video has been downloaded and converted (if applicable)!")                
 

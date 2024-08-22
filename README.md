@@ -11,8 +11,7 @@
 <br><br>
 # 기능
 <ul dir="auto">
-  <li>Youtube 오디오 다운로드 : aac, opus 인코딩 128kbps 이상</li>
-  <li>Youtube 비디오 다운로드 720p 이상</li>
+  <li>Youtube 오디오 및 비디오 다운로드</li>  
   <li>오디오 컨버팅 : 320kbps mp3, 24bit 48khz wav</li>
   <li>오디오, 비디오 각각 선택 다운로드 후 합치기</li>
   <li>Youtube Premium 사용자 : 256kbps 고음질 다운로드 가능</li>
@@ -34,7 +33,7 @@
 <br><strong>3. Search 버튼을 누르면 잠시 후 다운받을 수 있는 항목의 리스트가 나타납니다.</strong>
    <ul dir="auto">
    <li>Youtube Music의 공식 음원의 경우 Youtube Premium 쿠키를 사용하면 고음질 음원을 다운받을 수 있습니다.</li>
-   <li>쿠키 사용 시 오류가 생기면 브라우저를 종료하거나 다른 브라우저를 이용해 보세요.<br>(다른 브라우저에서 유튜브 로그인 후 브라우저 종료하면 됩니다)</li></ul>   
+   <li>쿠키 사용 시 오류가 발생하는 것은 yt-dlp의 자체적인 문제입니다. (쿠키폴더 접근 권한 문제)<br>브라우저를 완전히 종료하고 시도하면 되는 경우가 있습니다.</li></ul>   
    
 ![Manual3](https://github.com/hangoon-p/Youtube-Downloader-YT-DLP-GUI-for-Windows-/assets/11846563/7c2d45c6-ca4c-40f8-a663-1a31e4f45bf0)
   

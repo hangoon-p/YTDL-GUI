@@ -18,7 +18,7 @@ from PIL import Image, ImageTk
 
 
 class YoutubeDownloader(tk.Tk):
-    build_number = "2024082101"
+    build_number = "2024111801"
 
     def __init__(self):
         super().__init__()
@@ -65,7 +65,7 @@ class YoutubeDownloader(tk.Tk):
         self.cookies_label.grid(row=2, column=1, sticky=tk.NW)
         self.cookie_options = [
             "No Cookies",
-            #"cookies.txt",
+            "cookies.txt",
             "Browser: Chrome",
             "Browser: Edge",
             "Browser: Whale",
